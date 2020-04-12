@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>Booth.EventStore.MongoDB</PackageId>
+    <Authors>Craig Booth</Authors>
+    <Company />
+    <Description>Event Store provider using MongoDB</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>Booth.png</PackageIcon>
+    <Product />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Booth.Common" Version="1.0.7" />
+    <PackageReference Include="Booth.EventStore" Version="1.0.0" />
+    <PackageReference Include="MongoDB.Driver" Version="2.10.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Booth.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
