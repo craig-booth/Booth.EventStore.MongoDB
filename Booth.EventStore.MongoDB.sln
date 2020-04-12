@@ -8,7 +8,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Jenkinsfile = Jenkinsfile
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Booth.EventStore.MongoDB", "Booth.EventStore.MongoDB\Booth.EventStore.MongoDB.csproj", "{CB7B4E0F-ABD2-43FA-813F-B150324AD2F7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Booth.EventStore.MongoDB.Test", "Booth.EventStore.MongoDB.Test\Booth.EventStore.MongoDB.Test.csproj", "{1A38F768-F08F-4D32-B2F0-61E56669965C}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CB7B4E0F-ABD2-43FA-813F-B150324AD2F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB7B4E0F-ABD2-43FA-813F-B150324AD2F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB7B4E0F-ABD2-43FA-813F-B150324AD2F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB7B4E0F-ABD2-43FA-813F-B150324AD2F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A38F768-F08F-4D32-B2F0-61E56669965C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A38F768-F08F-4D32-B2F0-61E56669965C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A38F768-F08F-4D32-B2F0-61E56669965C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A38F768-F08F-4D32-B2F0-61E56669965C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
