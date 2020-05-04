@@ -7,6 +7,7 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Conventions;
 
 using NUnit.Framework;
+using FluentAssertions;
 using Moq;
 
 using Booth.Common;
@@ -25,7 +26,7 @@ namespace Booth.EventStore.MongoDB.Test
 
             var conventionPack = ConventionRegistry.Lookup(typeof(Event));
 
-            Assert.That(conventionPack.Conventions.Any(x => x.Name == "IgnoreExtraElements"), Is.True);
+            conventionPack.Conventions.Should().Contain(x => x.Name == "IgnoreExtraElements");
         }
 
         [TestCase]
@@ -36,7 +37,7 @@ namespace Booth.EventStore.MongoDB.Test
 
             var serializer = BsonSerializer.LookupSerializer<Date>();
 
-            Assert.That(serializer, Is.TypeOf<DateSerializer>());
+            serializer.Should().BeOfType<DateSerializer>();
         }
 
         [TestCase]
@@ -45,7 +46,9 @@ namespace Booth.EventStore.MongoDB.Test
             var database = Mock.Of<IMongoDatabase>();
             var eventStore = new MongodbEventStore(database);
 
-            Assert.That(BsonClassMap.IsClassMapRegistered(typeof(TestEvent)), Is.True);
+            var isRegisterd = BsonClassMap.IsClassMapRegistered(typeof(TestEvent));
+
+            isRegisterd.Should().BeTrue();
         }
 
     }

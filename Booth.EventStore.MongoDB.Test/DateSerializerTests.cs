@@ -6,6 +6,7 @@ using MongoDB.Bson.IO;
 
 
 using NUnit.Framework;
+using FluentAssertions;
 using Moq;
 
 using Booth.Common;
@@ -40,7 +41,7 @@ namespace Booth.EventStore.MongoDB.Test
             var serializer = new DateSerializer();
             var date = serializer.Deserialize(context);
 
-            Assert.That(date, Is.EqualTo(new Date(2019, 12, 01)));
+            date.Should().Be(new Date(2019, 12, 01));
         }
 
         [TestCase]
@@ -54,7 +55,7 @@ namespace Booth.EventStore.MongoDB.Test
             var serializer = new DateSerializer();
             var date = serializer.Deserialize(context);
 
-            Assert.That(date, Is.EqualTo(Date.MinValue));
+            date.Should().Be(Date.MinValue);
         }
 
         [TestCase]
@@ -68,7 +69,7 @@ namespace Booth.EventStore.MongoDB.Test
             var serializer = new DateSerializer();
             var date = serializer.Deserialize(context);
 
-            Assert.That(date, Is.EqualTo(Date.MinValue));
+            date.Should().Be(Date.MinValue);
         }
 
         [TestCase]
@@ -82,7 +83,7 @@ namespace Booth.EventStore.MongoDB.Test
             var serializer = new DateSerializer();
             var date = serializer.Deserialize(context);
 
-            Assert.That(date, Is.EqualTo(Date.MinValue));
+            date.Should().Be(Date.MinValue);
         }
 
         [TestCase]
@@ -95,8 +96,8 @@ namespace Booth.EventStore.MongoDB.Test
             var serializer = new DateSerializer();
             var date = serializer.Deserialize(context);
 
+            date.Should().Be(Date.MinValue);
             Mock.Get(reader).Verify(x => x.SkipValue());
-            Assert.That(date, Is.EqualTo(Date.MinValue));
         }
 
         [TestCase]
@@ -112,7 +113,7 @@ namespace Booth.EventStore.MongoDB.Test
             var serializer = new DateSerializer();
             var date = serializer.Deserialize(context);
 
-            Assert.That(date, Is.EqualTo(new Date(2019, 12, 01)));
+            date.Should().Be(new Date(2019, 12, 01));
         }
 
         [TestCase]
@@ -128,7 +129,7 @@ namespace Booth.EventStore.MongoDB.Test
             var serializer = new DateSerializer();
             var date = serializer.Deserialize(context);
 
-            Assert.That(date, Is.EqualTo(new Date(2019, 12, 01)));
+            date.Should().Be(new Date(2019, 12, 01));
         }
 
     }
