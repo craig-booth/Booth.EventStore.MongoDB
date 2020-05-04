@@ -6,7 +6,7 @@ using MongoDB.Driver;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.Conventions;
 
-using NUnit.Framework;
+using Xunit;
 using FluentAssertions;
 using Moq;
 
@@ -16,9 +16,9 @@ using Booth.EventStore.MongoDB;
 
 namespace Booth.EventStore.MongoDB.Test
 {
-    class EventStoreTests
+    public class EventStoreTests
     {
-        [TestCase]
+        [Fact]
         public void IncludesNeededConventions()
         {
             var database = Mock.Of<IMongoDatabase>();
@@ -29,7 +29,7 @@ namespace Booth.EventStore.MongoDB.Test
             conventionPack.Conventions.Should().Contain(x => x.Name == "IgnoreExtraElements");
         }
 
-        [TestCase]
+        [Fact]
         public void DateSerializerRegistered()
         {
             var database = Mock.Of<IMongoDatabase>();
@@ -40,7 +40,7 @@ namespace Booth.EventStore.MongoDB.Test
             serializer.Should().BeOfType<DateSerializer>();
         }
 
-        [TestCase]
+        [Fact]
         public void EventTypesMapped()
         {
             var database = Mock.Of<IMongoDatabase>();
