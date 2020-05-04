@@ -5,7 +5,8 @@ using MongoDB.Bson.Serialization;
 using MongoDB.Bson.IO;
 
 
-using NUnit.Framework;
+using Xunit;
+using FluentAssertions;
 using Moq;
 
 using Booth.Common;
@@ -13,9 +14,9 @@ using Booth.Common;
 
 namespace Booth.EventStore.MongoDB.Test
 {
-    class DateSerializerTests
+    public class DateSerializerTests
     {
-        [TestCase]
+        [Fact]
         public void Serialize()
         {
             var writer = Mock.Of<IBsonWriter>();
@@ -29,7 +30,7 @@ namespace Booth.EventStore.MongoDB.Test
             Mock.Get(writer).Verify(x => x.WriteString("2019-12-01"));
         }
 
-        [TestCase]
+        [Fact]
         public void DeSerializeValidDate()
         {
             var reader = Mock.Of<IBsonReader>();
@@ -40,10 +41,10 @@ namespace Booth.EventStore.MongoDB.Test
             var serializer = new DateSerializer();
             var date = serializer.Deserialize(context);
 
-            Assert.That(date, Is.EqualTo(new Date(2019, 12, 01)));
+            date.Should().Be(new Date(2019, 12, 01));
         }
 
-        [TestCase]
+        [Fact]
         public void DeSerializeNullValue()
         {
             var reader = Mock.Of<IBsonReader>();
@@ -54,10 +55,10 @@ namespace Booth.EventStore.MongoDB.Test
             var serializer = new DateSerializer();
             var date = serializer.Deserialize(context);
 
-            Assert.That(date, Is.EqualTo(Date.MinValue));
+            date.Should().Be(Date.MinValue);
         }
 
-        [TestCase]
+        [Fact]
         public void DeSerializeEmptyValue()
         {
             var reader = Mock.Of<IBsonReader>();
@@ -68,10 +69,10 @@ namespace Booth.EventStore.MongoDB.Test
             var serializer = new DateSerializer();
             var date = serializer.Deserialize(context);
 
-            Assert.That(date, Is.EqualTo(Date.MinValue));
+            date.Should().Be(Date.MinValue);
         }
 
-        [TestCase]
+        [Fact]
         public void DeSerializeInvalidDate()
         {
             var reader = Mock.Of<IBsonReader>();
@@ -82,10 +83,10 @@ namespace Booth.EventStore.MongoDB.Test
             var serializer = new DateSerializer();
             var date = serializer.Deserialize(context);
 
-            Assert.That(date, Is.EqualTo(Date.MinValue));
+            date.Should().Be(Date.MinValue);
         }
 
-        [TestCase]
+        [Fact]
         public void DeSerializeNumericType()
         {
             var reader = Mock.Of<IBsonReader>();
@@ -95,11 +96,11 @@ namespace Booth.EventStore.MongoDB.Test
             var serializer = new DateSerializer();
             var date = serializer.Deserialize(context);
 
+            date.Should().Be(Date.MinValue);
             Mock.Get(reader).Verify(x => x.SkipValue());
-            Assert.That(date, Is.EqualTo(Date.MinValue));
         }
 
-        [TestCase]
+        [Fact]
         public void DeSerializeDateTimeType()
         {
             var testDate = new DateTimeOffset(2019, 12, 01, 8, 54, 26, TimeSpan.Zero);
@@ -112,10 +113,10 @@ namespace Booth.EventStore.MongoDB.Test
             var serializer = new DateSerializer();
             var date = serializer.Deserialize(context);
 
-            Assert.That(date, Is.EqualTo(new Date(2019, 12, 01)));
+            date.Should().Be(new Date(2019, 12, 01));
         }
 
-        [TestCase]
+        [Fact]
         public void DeSerializeTimeStampType()
         {
             var testDate = new DateTimeOffset(2019, 12, 01, 8, 54, 26, TimeSpan.Zero);
@@ -128,7 +129,7 @@ namespace Booth.EventStore.MongoDB.Test
             var serializer = new DateSerializer();
             var date = serializer.Deserialize(context);
 
-            Assert.That(date, Is.EqualTo(new Date(2019, 12, 01)));
+            date.Should().Be(new Date(2019, 12, 01));
         }
 
     }
