@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <ApplicationIcon />
     <StartupObject />
   </PropertyGroup>
@@ -10,9 +10,9 @@
   <ItemGroup>
     <PackageReference Include="Booth.Common" Version="1.0.8" />
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.0" />
-    <PackageReference Include="MongoDB.Driver" Version="2.11.0" />
-    <PackageReference Include="Moq" Version="4.14.5" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.3" />
+    <PackageReference Include="MongoDB.Driver" Version="2.11.5" />
+    <PackageReference Include="Moq" Version="4.15.2" />
     <PackageReference Include="xunit" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
       <PrivateAssets>all</PrivateAssets>
