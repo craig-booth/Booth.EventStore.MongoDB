@@ -1,5 +1,5 @@
 pipeline {
-    agent { docker 'mcr.microsoft.com/dotnet/core/sdk:3.0' }
+    agent { docker 'mcr.microsoft.com/dotnet/sdk:5.0-alpine' }
 	
 	environment {
 		PROJECT      = './Booth.EventStore.MongoDB/Booth.EventStore.MongoDB.csproj'
