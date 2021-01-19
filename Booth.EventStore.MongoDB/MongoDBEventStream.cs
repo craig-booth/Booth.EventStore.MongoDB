@@ -27,7 +27,7 @@ namespace Booth.EventStore.MongoDB
 
         public StoredEntity Get(Guid entityId)
         {
-            var entity = _Collection.Find(x => x.EntityId == entityId)?.Single();
+            var entity = _Collection.Find(x => x.EntityId == entityId).FirstOrDefault();
 
             return entity;
         }
